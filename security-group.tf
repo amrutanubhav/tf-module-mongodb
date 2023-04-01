@@ -1,4 +1,4 @@
-resource "aws_security_group" "allow_all" {
+resource "aws_security_group" "allow_mongodb" {
   name        = "allow_${var.component}"
   description = "roboshop-${var.ENV}-mongodb-sg"
 
@@ -28,6 +28,6 @@ resource "aws_security_group" "allow_all" {
   }
 
   tags = {
-    Name = "allow_${var.component}"
+    Name = "roboshop-${var.ENV}-mongodb-sg"
   }
 }
