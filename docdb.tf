@@ -28,3 +28,6 @@ resource "aws_docdb_cluster_instance" "cluster_instances" {
   cluster_identifier = aws_docdb_cluster.docdb.id
   instance_class     = "db.t3.medium"
 }
+
+# our app is not designed to work with doc db
+# catalogue and cart is not designed to talk to mongodb with creds
