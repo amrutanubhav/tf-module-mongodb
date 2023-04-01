@@ -1,6 +1,8 @@
 resource "aws_security_group" "allow_mongodb" {
   name        = "roboshop-${var.ENV}-mongodb-sg"
   description = "allow 27017 inbound traffic from intranet only"
+  vpc_id      = data.terraform_remote_state.vpc.outputs.VPC_ID
+
 
   ingress {
     description      = "alow docdb from local network"
