@@ -1,14 +1,14 @@
 #this block provisions documentdb
 
-# resource "aws_docdb_cluster" "docdb" {
-#   cluster_identifier      = "roboshop-${var.ENV}-docdb"
-#   engine                  = "docdb"
-#   master_username         = "admin1"
-#   master_password         = "roboshop1"
-# #   backup_retention_period = 5
-# #   preferred_backup_window = "07:00-09:00"  #uncheck all 3 in production
-# #   skip_final_snapshot     = true
-# }
+resource "aws_docdb_cluster" "docdb" {
+  cluster_identifier      = "roboshop-${var.ENV}-docdb"
+  engine                  = "docdb"
+  master_username         = "admin1"
+  master_password         = "roboshop1"
+#   backup_retention_period = 5
+#   preferred_backup_window = "07:00-09:00"  #uncheck all 3 in production
+#   skip_final_snapshot     = true
+}
 
 #creates subnet group
 resource "aws_docdb_subnet_group" "docdb" {
