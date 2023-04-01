@@ -1,6 +1,6 @@
 resource "aws_security_group" "allow_mongodb" {
-  name        = "allow_${var.component}"
-  description = "roboshop-${var.ENV}-mongodb-sg"
+  name        = "roboshop-${var.ENV}-mongodb-sg"
+  description = "allow 27017 inbound traffic from intranet only"
 
   ingress {
     description      = "alow docdb from local network"
