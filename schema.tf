@@ -1,22 +1,22 @@
-resource "null_resource" "docdb" {
+# resource "null_resource" "docdb" {
 
-    depends_on = [
-      aws_db_instance.docdb
-    ]
+#     depends_on = [
+#       aws_db_instance.docdb
+#     ]
 
-  provisioner "local-exec" {
-    command =  <<EOF
+#   provisioner "local-exec" {
+#     command =  <<EOF
 
-    curl -s -L -o /tmp/mongodb.zip "https://github.com/stans-robot-project/mongodb/archive/main.zip"
-    cd /tmp
-    unzip mongodb.zip
-    cd mongodb-main
-    mongo -h aws_docdb_cluster.docdb.endpoint <catalogue.js
-    mongo -h aws_docdb_cluster.docdb.endpoint <user.js
+#     curl -s -L -o /tmp/mongodb.zip "https://github.com/stans-robot-project/mongodb/archive/main.zip"
+#     cd /tmp
+#     unzip mongodb.zip
+#     cd mongodb-main
+#     mongo -h aws_docdb_cluster.docdb.endpoint <catalogue.js
+#     mongo -h aws_docdb_cluster.docdb.endpoint <user.js
 
-    EOF
-  }
-}
+#     EOF
+#   }
+# }
 
 resource "null_resource" "docdb-schema" {
   
