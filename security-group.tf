@@ -1,13 +1,13 @@
 resource "aws_security_group" "allow_mongodb" {
   name        = "roboshop-${var.ENV}-mongodb-sg"
-  description = "allow 27017 inbound traffic from intranet only"
+  description = "allow ${var.DOCDB_PORT} inbound traffic from intranet only"
   vpc_id      = data.terraform_remote_state.vpc.outputs.VPC_ID
 
 
   ingress {
     description      = "alow docdb from local network"
-    from_port        = 27017
-    to_port          = 27017
+    from_port        = var.DOCDB_PORT
+    to_port          = var.DOCDB_PORT
     protocol         = "tcp"
     cidr_blocks      = [data.terraform_remote_state.vpc.outputs.VPC_CIDR]
     
@@ -15,8 +15,8 @@ resource "aws_security_group" "allow_mongodb" {
 
   ingress {
     description      = "alow docdb from default vpc network"
-    from_port        = 27017
-    to_port          = 27017
+    from_port        = var.DOCDB_PORT
+    to_port          = var.DOCDB_PORT
     protocol         = "tcp"
     cidr_blocks      = [data.terraform_remote_state.vpc.outputs.DEFAULT_VPC_CIDR]
     

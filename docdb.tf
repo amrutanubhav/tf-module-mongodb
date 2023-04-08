@@ -24,11 +24,10 @@ resource "aws_docdb_subnet_group" "docdb" {
 
 #create cluster instances
 resource "aws_docdb_cluster_instance" "cluster_instances" {
-  count              = 1
+  count              = var.DOCDB_INSTANCE_COUNT
   identifier         = "roboshop-${var.ENV}-docdb-nodes"
   cluster_identifier = aws_docdb_cluster.docdb.id
-  instance_class     = "db.t3.medium"
+  instance_class     = var.DOCDB_INSTANCE_CLASS
 }
-
 # our app is not designed to work with doc db
 # catalogue and cart is not designed to talk to mongodb with creds
